@@ -1,0 +1,22 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+div.form-panel{
+  padding: 20px;
+  background-color: aliceblue;
+}
+
+
+#ctrl-btn{
+  display: none;
+}
+
+#user-list-item:hover #ctrl-btn{
+  display: block;
+}

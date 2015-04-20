@@ -1,7 +1,7 @@
 var ini = require("ini"),
     fs = require("fs"),
     path = require("path")
-config = {}
+config = {};
 
 var files = fs.readdirSync(__dirname);
 files.filter(function(file){

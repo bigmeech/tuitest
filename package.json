@@ -16,6 +16,12 @@
     "ini": "~1.3.3",
     "request": "~2.55.0",
     "csv-stream": "~0.1.3",
-    "mongoose": "~4.0.1"
+    "mongoose": "~4.0.1",
+    "lodash": "~3.7.0",
+    "canonical-path": "0.0.2",
+    "bcrypt": "~0.8.2",
+    "hash-password-default": "0.0.1",
+    "nunjucks": "~1.3.3",
+    "consolidate": "~0.12.1"
   }
 }
