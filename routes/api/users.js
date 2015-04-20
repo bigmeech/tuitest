@@ -1,8 +1,11 @@
 var express = require('express');
 var router = express.Router();
 var UserModel = require(__('models/User'));
+var mongoose = require(__('lib/database'));
 var _ = require('lodash');
 var auth = require(__('lib/authentication'));
+
+
 
 
 router
@@ -10,7 +13,8 @@ router
     .all(auth.checkAuth, auth.checkRoles)
     .get(fetchUsers)
     .put(createUser)
-    .post(createUser);
+    .post(updateUser)
+    .delete(removeUser);
 
 router
     .route('/:id')
@@ -18,7 +22,7 @@ router
     .get(fetchUser)
     .post(updateUser)
     .delete(removeUser)
-    .put(updateUser); //puts can do updates as well
+    .put(updateUser); //puts can do updates as well depending on context
 
 
 function createUser(req, res, next){
@@ -36,8 +40,8 @@ function createUser(req, res, next){
 }
 
 function removeUser(req, res, next){
-  var params = req.params;
-  UserModel.remove(params, function(err, User){
+  var id = mongoose.Types.ObjectId(req.query.id);
+  UserModel.remove({_id : id}, function(err, User){
     if(err) return res.status(404).json(err);
     return res.json({ error:false, message:"User deleted successfully" })
   })
@@ -46,7 +50,7 @@ function removeUser(req, res, next){
 function fetchUser(req, res, next){
   var params = req.params;
   UserModel.findOne(params, function(err, User){
-    if(err) return res.status(404).json(err)
+    if(err) return res.status(404).json(err);
     return res.json(User);
   })
 }
@@ -56,15 +60,12 @@ function fetchUsers(req, res, next){
         if(err) return res.status(404).json(err);
         else{
             var UserCollection = Users.map(function(user){
-                return user.toObject();
+                return _.omit(user.toObject(),'hash');
             });
             return res.json(UserCollection);
         }
-
     })
 }
-
-
 
 function updateUser(req, res, next) {
   var data = req.body;

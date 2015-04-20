@@ -1,9 +1,9 @@
-angular.module('UserManager', ['ui.bootstrap','toastr'])
+angular.module('UserManager', ['ui.bootstrap', 'toastr'])
 
     .value('UserServiceEndpoint', 'http://localhost:3000/api/users')
     .service('UserService', function ($http, UserServiceEndpoint) {
-        function fetchUser(params) {
-            return $http.get(UserServiceEndpoint, params)
+        function fetchUser(id) {
+            return $http.get(UserServiceEndpoint, {params: {id: id}})
         }
 
         function fetchUsers() {
@@ -11,15 +11,15 @@ angular.module('UserManager', ['ui.bootstrap','toastr'])
         }
 
         function addNewUser(data) {
-            return $http.post(UserServiceEndpoint, data);
+            return $http.put(UserServiceEndpoint, data);
         }
 
         function deleteUser(id) {
-            return $http.delete(UserServiceEndpoint, {_id: id})
+            return $http.delete(UserServiceEndpoint, {params: {id: id}})
         }
 
-        function updateUser(id) {
-            return $http.put(UserServiceEndpoint, {_id: id})
+        function updateUser(user) {
+            return $http.post(UserServiceEndpoint, user)
         }
 
         return {
@@ -37,32 +37,42 @@ angular.module('UserManager', ['ui.bootstrap','toastr'])
             model.isCollapsed = !model.isCollapsed
         };
 
+        var clearForm = function () {
+            model.user = {};
+        };
 
         model.fetchUser = function () {
-            UserService.fetchUser()
+            UserService.fetchUser(model.user._id)
+        };
+
+        model.deleteUser = function (id) {
+            UserService.fetchUser(id)
+                .success(function (result) {
+                    toastr.success('User Deleted', 'Success');
+                    model.fetchUsers();
+                })
+                .error(function (err) {
+                    toastr.error(result.message, 'An Error Occured');
+                });
         };
 
         model.addUser = function () {
-            var user = {
-                lastname: $scope.lastname,
-                firstname: $scope.firstname,
-                email: $scope.email,
-                bio: $scope.bio
-            };
-            UserService.create(user)
+            return UserService.createUser(model.user)
                 .success(function (data) {
-                    $scope.firstname = $scope.lastname = $scope.email = $scope.bio = "";
-                    toastr.success('New User Created!','Success')
+                    clearForm();
+                    toastr.success('New User Created!', 'Success');
                     model.fetchUsers();
                 }).error(function (result) {
                     toastr.error(result.message, 'An Error Occured');
                 })
         };
 
-        model.editUser = function (id) {
-            return UserService.updateUser(id)
+        model.saveEdit = function () {
+            return UserService.updateUser(model.user)
                 .success(function (result) {
-                    toastr.success('Details Updates','Success')
+                    toastr.success('Details Updated', 'Success');
+                    clearForm();
+                    model.editMode = false;
                     model.fetchUsers();
                 })
                 .error(function (result) {
@@ -70,10 +80,15 @@ angular.module('UserManager', ['ui.bootstrap','toastr'])
                 })
         };
 
+        model.prepareForEdit = function (user) {
+            model.user = user;
+            model.editMode = true;
+        };
+
         model.removeUser = function (id) {
             return UserService.removeUser(id)
                 .success(function (result) {
-                    toastr.success('User Deleted','Success')
+                    toastr.success('User Deleted', 'Success')
                     model.fetchUsers();
                 })
                 .error(function (result) {

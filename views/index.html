@@ -20,23 +20,30 @@
 <div class="container">
     <div>
         <h3 class="pull-left">User Manager</h3>
-        <button ng-click="vm.showForm()" class="btn btn-small pull-right">Toggle User Form</button>
+        <a ng-click="vm.showForm()" class="btn btn-small pull-right">
+            Toggle User Form
+            <i class="glyphicon glyphicon-menu-up" ng-class="vm.isCollapsed ? 'glyphicon glyphicon-menu-up' : 'glyphicon glyphicon-menu-down'"></i>
+        </a>
     </div>
     <div class="clearfix"></div>
     <div class="form-panel" collapse="vm.isCollapsed">
         <div class="form-group">
-            <input class="form-control" ng-model="firstname" placeholder="First Name"/>
+            <input type="text" class="form-control" ng-model="vm.user.firstname" placeholder="First Name"/>
         </div>
         <div class="form-group">
-            <input class="form-control" ng-model="lastname" placeholder="Last Name"/>
+            <input type="text" class="form-control" ng-model="vm.user.lastname" placeholder="Last Name"/>
         </div>
         <div class="form-group">
-            <input class="form-control" ng-model="email" placeholder="Email"/>
+            <input type="email" class="form-control" ng-model="vm.user.email" placeholder="Email"/>
         </div>
         <div class="form-group">
-            <textarea class="form-control" ng-model="bio" placeholder="Write your bio"></textarea>
+            <input type="password" class="form-control" ng-model="vm.user.password" placeholder="Password"/>
         </div>
-        <button ng-click="vm.addUser()" class="btn btn-primary">Add/Save User</button>
+        <div class="form-group">
+            <textarea class="form-control" ng-model="vm.user.bio" placeholder="Tell us about you"></textarea>
+        </div>
+        <button ng-disabled="vm.editMode" ng-click="vm.addUser()" class="btn btn-primary">Add User</button>
+        <button ng-disabled="!vm.editMode" ng-click="vm.saveEdit()" class="btn btn-primary">Save Edit</button>
     </div>
     <div>
         <h4>Users</h4>
@@ -45,7 +52,7 @@
             <a id="user-list-item" href="#" class="list-group-item" ng-repeat="user in vm.users track by user._id">
                 {{user.firstname}} {{user.lastname}}
                 <div id="ctrl-btn" class="pull-right">
-                    <button class="btn btn-small glyphicon glyphicon-pencil" ng-click="vm.editUser(user._id)"></button>
+                    <button class="btn btn-small glyphicon glyphicon-pencil" ng-click="vm.prepareForEdit(user)"></button>
                     <button class="btn btn-small glyphicon glyphicon-trash" ng-click="vm.removeUser(user._id)"></button>
                 </div>
                 <div class="clearfix"></div>
