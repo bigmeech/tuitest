@@ -1023,7 +1023,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 	document = doc;
 	docElem = doc.documentElement;
 
-	// Support tests
+	// Support test
 	documentIsHTML = !isXML( doc );
 
 	// Support: IE>8
@@ -1188,7 +1188,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 
 			// Webkit/Opera - :checked should return selected option elements
 			// http://www.w3.org/TR/2011/REC-css3-selectors-20110929/#checked
-			// IE8 throws error here and will not see later tests
+			// IE8 throws error here and will not see later test
 			if ( !div.querySelectorAll(":checked").length ) {
 				rbuggyQSA.push(":checked");
 			}
@@ -1208,7 +1208,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 			}
 
 			// FF 3.5 - :enabled/:disabled and hidden elements (hidden elements are still enabled)
-			// IE8 throws error here and will not see later tests
+			// IE8 throws error here and will not see later test
 			if ( !div.querySelectorAll(":enabled").length ) {
 				rbuggyQSA.push( ":enabled", ":disabled" );
 			}
@@ -5605,7 +5605,7 @@ function addGetHookIf( conditionFn, hookFn ) {
 		"position:absolute";
 	container.appendChild( div );
 
-	// Executing both pixelPosition & boxSizingReliable tests require only one layout
+	// Executing both pixelPosition & boxSizingReliable test require only one layout
 	// so they're executed at the same time to save the second computation.
 	function computePixelPositionAndBoxSizingReliable() {
 		div.style.cssText =
@@ -9367,7 +9367,7 @@ function minErr(module, ErrorConstructor) {
 var REGEX_STRING_REGEXP = /^\/(.+)\/([a-z]*)$/;
 
 // The name of a form control's ValidityState property.
-// This is used so that it's possible for internal tests to create mock ValidityStates.
+// This is used so that it's possible for internal test to create mock ValidityStates.
 var VALIDITY_STATE_PROPERTY = 'validity';
 
 /**
@@ -10562,7 +10562,7 @@ function angularInit(element, bootstrap) {
  *
  * See: {@link guide/bootstrap Bootstrap}
  *
- * Note that Protractor based end-to-end tests cannot use this function to bootstrap manually.
+ * Note that Protractor based end-to-end test cannot use this function to bootstrap manually.
  * They must use {@link ng.directive:ngApp ngApp}.
  *
  * Angular will detect if it has been loaded into the browser more than once and only allow the
@@ -14060,7 +14060,7 @@ function $$AsyncCallbackProvider() {
  * - hide all the global state in the browser caused by the window object
  * - abstract away all the browser specific features and inconsistencies
  *
- * For tests we provide {@link ngMock.$browser mock implementation} of the `$browser`
+ * For test we provide {@link ngMock.$browser mock implementation} of the `$browser`
  * service, which can be used for convenient testing of the application without the interaction with
  * the real browser apis.
  */
@@ -14123,7 +14123,7 @@ function Browser(window, document, $log, $sniffer) {
   self.notifyWhenNoOutstandingRequests = function(callback) {
     // force browser to execute all pollFns - this is needed so that cookies and other pollers fire
     // at some deterministic time in respect to the test runner's actions. Leaving things up to the
-    // regular poller would result in flaky tests.
+    // regular poller would result in flaky test.
     forEach(pollFns, function(pollFn) { pollFn(); });
 
     if (outstandingRequestCount === 0) {
@@ -14465,7 +14465,7 @@ function Browser(window, document, $log, $sniffer) {
    * Executes a fn asynchronously via `setTimeout(fn, delay)`.
    *
    * Unlike when calling `setTimeout` directly, in test this function is mocked and instead of using
-   * `setTimeout` in tests, the fns are queued in an array, which can be programmatically flushed
+   * `setTimeout` in test, the fns are queued in an array, which can be programmatically flushed
    * via `$browser.defer.flush()`.
    *
    */
@@ -17713,7 +17713,7 @@ function $DocumentProvider() {
  * The default implementation simply delegates to `$log.error` which logs it into
  * the browser console.
  *
- * In unit tests, if `angular-mocks.js` is loaded, this service is overridden by
+ * In unit test, if `angular-mocks.js` is loaded, this service is overridden by
  * {@link ngMock.$exceptionHandler mock $exceptionHandler} which aids in testing.
  *
  * ## Example:
@@ -19447,7 +19447,7 @@ function $IntervalProvider() {
       * number of iterations that have run.
       * To cancel an interval, call `$interval.cancel(promise)`.
       *
-      * In tests you can use {@link ngMock.$interval#flush `$interval.flush(millis)`} to
+      * In test you can use {@link ngMock.$interval#flush `$interval.flush(millis)`} to
       * move forward by `millis` milliseconds and trigger any functions scheduled to run in that
       * time.
       *
@@ -22776,7 +22776,7 @@ function $RootScopeProvider() {
          expect(parent.salutation).toEqual('Hello');
      * ```
      *
-     * When interacting with `Scope` in tests, additional helper methods are available on the
+     * When interacting with `Scope` in test, additional helper methods are available on the
      * instances of `Scope` type. See {@link ngMock.$rootScope.Scope ngMock Scope} for additional
      * details.
      *
@@ -23349,7 +23349,7 @@ function $RootScopeProvider() {
        * you can register a `watchExpression` function with
        * {@link ng.$rootScope.Scope#$watch $watch()} with no `listener`.
        *
-       * In unit tests, you may need to call `$digest()` to simulate the scope life cycle.
+       * In unit test, you may need to call `$digest()` to simulate the scope life cycle.
        *
        * # Example
        * ```js
@@ -23456,7 +23456,7 @@ function $RootScopeProvider() {
             }
 
             // Insanity Warning: scope depth-first traversal
-            // yes, this code is a bit crazy, but it works and we have tests to prove it!
+            // yes, this code is a bit crazy, but it works and we have test to prove it!
             // this piece should be kept in sync with the traversal in $broadcast
             if (!(next = (current.$$childHead ||
                 (current !== target && current.$$nextSibling)))) {
@@ -23916,7 +23916,7 @@ function $RootScopeProvider() {
           }
 
           // Insanity Warning: scope depth-first traversal
-          // yes, this code is a bit crazy, but it works and we have tests to prove it!
+          // yes, this code is a bit crazy, but it works and we have test to prove it!
           // this piece should be kept in sync with the traversal in $digest
           // (though it differs due to having the extra check for $$listenerCount)
           if (!(next = ((current.$$listenerCount[name] && current.$$childHead) ||
@@ -25393,7 +25393,7 @@ function $TimeoutProvider() {
       *
       * To cancel a timeout request, call `$timeout.cancel(promise)`.
       *
-      * In tests you can use {@link ngMock.$timeout `$timeout.flush()`} to
+      * In test you can use {@link ngMock.$timeout `$timeout.flush()`} to
       * synchronously flush the queue of deferred functions.
       *
       * @param {function()} fn A function, whose execution should be delayed.
@@ -25459,7 +25459,7 @@ function $TimeoutProvider() {
 // NOTE:  The usage of window and document instead of $window and $document here is
 // deliberate.  This service depends on the specific behavior of anchor nodes created by the
 // browser (resolving and parsing URLs) that is unlikely to be provided by mock objects and
-// cause us to break tests.  In addition, when the browser resolves a URL for XHR, it
+// cause us to break test.  In addition, when the browser resolves a URL for XHR, it
 // doesn't know about mocked locations and resolves URLs to the real document - which is
 // exactly the behavior needed here.  There is little value is mocking these out for this
 // service.
@@ -30533,7 +30533,7 @@ var ngControllerDirective = [function() {
           }
 
           it('should not report errors when the page is loaded', function() {
-            // clear errors so we are not dependent on previous tests
+            // clear errors so we are not dependent on previous test
             clearErrors();
             // Need to reload the page as the page is already loaded when
             // we come here
@@ -35539,7 +35539,7 @@ function callerFile(offset) {
  * To work around this we instead use our own handler that fires a real event.
  */
 (function(fn) {
-  // We need a handle to the original trigger function for input tests.
+  // We need a handle to the original trigger function for input test.
   var parentTrigger = fn._originalTrigger = fn.trigger;
   fn.trigger = function(type) {
     if (/(click|change|keydown|blur|input|mousedown|mouseup)/.test(type)) {
@@ -35881,7 +35881,7 @@ angular.scenario.Application.prototype.executeAction = function(action) {
 
 /**
  * The representation of define blocks. Don't used directly, instead use
- * define() in your tests.
+ * define() in your test.
  *
  * @param {string} descName Name of the block
  * @param {Object} parent describe or undefined if the root.
@@ -35988,7 +35988,7 @@ angular.scenario.Describe.prototype.it = function(name, body) {
 };
 
 /**
- * Same as it() but makes iit tests the only test to run.
+ * Same as it() but makes iit test the only test to run.
  *
  * @param {string} name Name of the test.
  * @param {function()} body Body of the block.
@@ -36004,7 +36004,7 @@ angular.scenario.Describe.prototype.iit = function(name, body) {
 angular.scenario.Describe.prototype.xit = angular.noop;
 
 /**
- * Gets an array of functions representing all the tests (recursively).
+ * Gets an array of functions representing all the test (recursively).
  * that can be executed with SpecRunner's.
  *
  * @return {Array<Object>} Array of it blocks {
@@ -36456,7 +36456,7 @@ angular.scenario.Runner.prototype.it = function(name, body) {
 };
 
 /**
- * Same as it, but makes iit tests the only tests to run.
+ * Same as it, but makes iit test the only test to run.
  *
  * @see Describe.js
  *
@@ -36511,7 +36511,7 @@ angular.scenario.Runner.prototype.createSpecRunner_ = function(scope) {
 };
 
 /**
- * Runs all the loaded tests with the specified runner class on the
+ * Runs all the loaded test with the specified runner class on the
  * provided application.
  *
  * @param {angular.scenario.Application} application App to remote control.
@@ -37271,7 +37271,7 @@ angular.scenario.output('html', function(context, runner, model) {
     ui.find('> .tests').append(
       '<li class="status-pending test-it"></li>'
     );
-    ui = ui.find('> .tests li:last');
+    ui = ui.find('> .test li:last');
     ui.append(
       '<div class="test-info">' +
       '  <p class="test-title">' +
@@ -37370,7 +37370,7 @@ angular.scenario.output('html', function(context, runner, model) {
           '<div class="test-describe" id="' + id + '">' +
           '  <h2></h2>' +
           '  <div class="test-children"></div>' +
-          '  <ul class="tests"></ul>' +
+          '  <ul class="test"></ul>' +
           '</div>'
         );
         context.find('#' + id).find('> h2').text('describe: ' + defn.name);
@@ -37496,4 +37496,4 @@ if (config.autotest) {
 
 
 !window.angular.$$csp() && window.angular.element(document).find('head').prepend('<style type="text/css">@charset "UTF-8";\n\n[ng\\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak],\n.ng-cloak, .x-ng-cloak,\n.ng-hide:not(.ng-hide-animate) {\n  display: none !important;\n}\n\nng\\:form {\n  display: block;\n}\n</style>');
-!window.angular.$$csp() && window.angular.element(document).find('head').prepend('<style type="text/css">@charset "UTF-8";\n/* CSS Document */\n\n/** Structure */\nbody {\n  font-family: Arial, sans-serif;\n  margin: 0;\n  font-size: 14px;\n}\n\n#system-error {\n  font-size: 1.5em;\n  text-align: center;\n}\n\n#json, #xml {\n  display: none;\n}\n\n#header {\n  position: fixed;\n  width: 100%;\n}\n\n#specs {\n  padding-top: 50px;\n}\n\n#header .angular {\n  font-family: Courier New, monospace;\n  font-weight: bold;\n}\n\n#header h1 {\n  font-weight: normal;\n  float: left;\n  font-size: 30px;\n  line-height: 30px;\n  margin: 0;\n  padding: 10px 10px;\n  height: 30px;\n}\n\n#application h2,\n#specs h2 {\n  margin: 0;\n  padding: 0.5em;\n  font-size: 1.1em;\n}\n\n#status-legend {\n  margin-top: 10px;\n  margin-right: 10px;\n}\n\n#header,\n#application,\n.test-info,\n.test-actions li {\n  overflow: hidden;\n}\n\n#application {\n  margin: 10px;\n}\n\n#application iframe {\n  width: 100%;\n  height: 758px;\n}\n\n#application .popout {\n  float: right;\n}\n\n#application iframe {\n  border: none;\n}\n\n.tests li,\n.test-actions li,\n.test-it li,\n.test-it ol,\n.status-display {\n  list-style-type: none;\n}\n\n.tests,\n.test-it ol,\n.status-display {\n  margin: 0;\n  padding: 0;\n}\n\n.test-info {\n  margin-left: 1em;\n  margin-top: 0.5em;\n  border-radius: 8px 0 0 8px;\n  -webkit-border-radius: 8px 0 0 8px;\n  -moz-border-radius: 8px 0 0 8px;\n  cursor: pointer;\n}\n\n.test-info:hover .test-name {\n  text-decoration: underline;\n}\n\n.test-info .closed:before {\n  content: \'\\25b8\\00A0\';\n}\n\n.test-info .open:before {\n  content: \'\\25be\\00A0\';\n  font-weight: bold;\n}\n\n.test-it ol {\n  margin-left: 2.5em;\n}\n\n.status-display,\n.status-display li {\n  float: right;\n}\n\n.status-display li {\n  padding: 5px 10px;\n}\n\n.timer-result,\n.test-title {\n  display: inline-block;\n  margin: 0;\n  padding: 4px;\n}\n\n.test-actions .test-title,\n.test-actions .test-result {\n  display: table-cell;\n  padding-left: 0.5em;\n  padding-right: 0.5em;\n}\n\n.test-actions {\n  display: table;\n}\n\n.test-actions li {\n  display: table-row;\n}\n\n.timer-result {\n  width: 4em;\n  padding: 0 10px;\n  text-align: right;\n  font-family: monospace;\n}\n\n.test-it pre,\n.test-actions pre {\n  clear: left;\n  color: black;\n  margin-left: 6em;\n}\n\n.test-describe {\n  padding-bottom: 0.5em;\n}\n\n.test-describe .test-describe {\n  margin: 5px 5px 10px 2em;\n}\n\n.test-actions .status-pending .test-title:before {\n  content: \'\\00bb\\00A0\';\n}\n\n.scrollpane {\n   max-height: 20em;\n   overflow: auto;\n}\n\n/** Colors */\n\n#header {\n  background-color: #F2C200;\n}\n\n#specs h2 {\n  border-top: 2px solid #BABAD1;\n}\n\n#specs h2,\n#application h2 {\n  background-color: #efefef;\n}\n\n#application {\n  border: 1px solid #BABAD1;\n}\n\n.test-describe .test-describe {\n  border-left: 1px solid #BABAD1;\n  border-right: 1px solid #BABAD1;\n  border-bottom: 1px solid #BABAD1;\n}\n\n.status-display {\n  border: 1px solid #777;\n}\n\n.status-display .status-pending,\n.status-pending .test-info {\n  background-color: #F9EEBC;\n}\n\n.status-display .status-success,\n.status-success .test-info {\n  background-color: #B1D7A1;\n}\n\n.status-display .status-failure,\n.status-failure .test-info {\n  background-color: #FF8286;\n}\n\n.status-display .status-error,\n.status-error .test-info {\n  background-color: black;\n  color: white;\n}\n\n.test-actions .status-success .test-title {\n  color: #30B30A;\n}\n\n.test-actions .status-failure .test-title {\n  color: #DF0000;\n}\n\n.test-actions .status-error .test-title {\n  color: black;\n}\n\n.test-actions .timer-result {\n  color: #888;\n}\n</style>');
+!window.angular.$$csp() && window.angular.element(document).find('head').prepend('<style type="text/css">@charset "UTF-8";\n/* CSS Document */\n\n/** Structure */\nbody {\n  font-family: Arial, sans-serif;\n  margin: 0;\n  font-size: 14px;\n}\n\n#system-error {\n  font-size: 1.5em;\n  text-align: center;\n}\n\n#json, #xml {\n  display: none;\n}\n\n#header {\n  position: fixed;\n  width: 100%;\n}\n\n#specs {\n  padding-top: 50px;\n}\n\n#header .angular {\n  font-family: Courier New, monospace;\n  font-weight: bold;\n}\n\n#header h1 {\n  font-weight: normal;\n  float: left;\n  font-size: 30px;\n  line-height: 30px;\n  margin: 0;\n  padding: 10px 10px;\n  height: 30px;\n}\n\n#application h2,\n#specs h2 {\n  margin: 0;\n  padding: 0.5em;\n  font-size: 1.1em;\n}\n\n#status-legend {\n  margin-top: 10px;\n  margin-right: 10px;\n}\n\n#header,\n#application,\n.test-info,\n.test-actions li {\n  overflow: hidden;\n}\n\n#application {\n  margin: 10px;\n}\n\n#application iframe {\n  width: 100%;\n  height: 758px;\n}\n\n#application .popout {\n  float: right;\n}\n\n#application iframe {\n  border: none;\n}\n\n.test li,\n.test-actions li,\n.test-it li,\n.test-it ol,\n.status-display {\n  list-style-type: none;\n}\n\n.test,\n.test-it ol,\n.status-display {\n  margin: 0;\n  padding: 0;\n}\n\n.test-info {\n  margin-left: 1em;\n  margin-top: 0.5em;\n  border-radius: 8px 0 0 8px;\n  -webkit-border-radius: 8px 0 0 8px;\n  -moz-border-radius: 8px 0 0 8px;\n  cursor: pointer;\n}\n\n.test-info:hover .test-name {\n  text-decoration: underline;\n}\n\n.test-info .closed:before {\n  content: \'\\25b8\\00A0\';\n}\n\n.test-info .open:before {\n  content: \'\\25be\\00A0\';\n  font-weight: bold;\n}\n\n.test-it ol {\n  margin-left: 2.5em;\n}\n\n.status-display,\n.status-display li {\n  float: right;\n}\n\n.status-display li {\n  padding: 5px 10px;\n}\n\n.timer-result,\n.test-title {\n  display: inline-block;\n  margin: 0;\n  padding: 4px;\n}\n\n.test-actions .test-title,\n.test-actions .test-result {\n  display: table-cell;\n  padding-left: 0.5em;\n  padding-right: 0.5em;\n}\n\n.test-actions {\n  display: table;\n}\n\n.test-actions li {\n  display: table-row;\n}\n\n.timer-result {\n  width: 4em;\n  padding: 0 10px;\n  text-align: right;\n  font-family: monospace;\n}\n\n.test-it pre,\n.test-actions pre {\n  clear: left;\n  color: black;\n  margin-left: 6em;\n}\n\n.test-describe {\n  padding-bottom: 0.5em;\n}\n\n.test-describe .test-describe {\n  margin: 5px 5px 10px 2em;\n}\n\n.test-actions .status-pending .test-title:before {\n  content: \'\\00bb\\00A0\';\n}\n\n.scrollpane {\n   max-height: 20em;\n   overflow: auto;\n}\n\n/** Colors */\n\n#header {\n  background-color: #F2C200;\n}\n\n#specs h2 {\n  border-top: 2px solid #BABAD1;\n}\n\n#specs h2,\n#application h2 {\n  background-color: #efefef;\n}\n\n#application {\n  border: 1px solid #BABAD1;\n}\n\n.test-describe .test-describe {\n  border-left: 1px solid #BABAD1;\n  border-right: 1px solid #BABAD1;\n  border-bottom: 1px solid #BABAD1;\n}\n\n.status-display {\n  border: 1px solid #777;\n}\n\n.status-display .status-pending,\n.status-pending .test-info {\n  background-color: #F9EEBC;\n}\n\n.status-display .status-success,\n.status-success .test-info {\n  background-color: #B1D7A1;\n}\n\n.status-display .status-failure,\n.status-failure .test-info {\n  background-color: #FF8286;\n}\n\n.status-display .status-error,\n.status-error .test-info {\n  background-color: black;\n  color: white;\n}\n\n.test-actions .status-success .test-title {\n  color: #30B30A;\n}\n\n.test-actions .status-failure .test-title {\n  color: #DF0000;\n}\n\n.test-actions .status-error .test-title {\n  color: black;\n}\n\n.test-actions .timer-result {\n  color: #888;\n}\n</style>');

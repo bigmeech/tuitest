@@ -27,7 +27,7 @@ angular.mock = {};
  * cookies, etc...
  *
  * The api of this service is the same as that of the real {@link ng.$browser $browser}, except
- * that there are several helper methods available which can be used in tests.
+ * that there are several helper methods available which can be used in test.
  */
 angular.mock.$BrowserProvider = function() {
   this.$get = function() {
@@ -254,8 +254,8 @@ angular.mock.$ExceptionHandlerProvider = function() {
    *            mode stores an array of errors in `$exceptionHandler.errors`, to allow later
    *            assertion of them. See {@link ngMock.$log#assertEmpty assertEmpty()} and
    *            {@link ngMock.$log#reset reset()}
-   *   - `rethrow`: If any errors are passed to the handler in tests, it typically means that there
-   *                is a bug in the application or test, so this mock will make these tests fail.
+   *   - `rethrow`: If any errors are passed to the handler in test, it typically means that there
+   *                is a bug in the application or test, so this mock will make these test fail.
    *                For any implementations that expect exceptions to be thrown, the `rethrow` mode
    *                will also maintain a log of thrown errors.
    */
@@ -912,7 +912,7 @@ angular.mock.dump = function(object) {
  * *Note*: For fake HTTP backend implementation suitable for end-to-end testing or backend-less
  * development please see {@link ngMockE2E.$httpBackend e2e $httpBackend mock}.
  *
- * During unit testing, we want our unit tests to run quickly and have no external dependencies so
+ * During unit testing, we want our unit test to run quickly and have no external dependencies so
  * we don’t want to send [XHR](https://developer.mozilla.org/en/xmlhttprequest) or
  * [JSONP](http://en.wikipedia.org/wiki/JSONP) requests to a real server. All we really need is
  * to verify whether a certain request has been sent or not, or alternatively just let the
@@ -954,7 +954,7 @@ angular.mock.dump = function(object) {
  *   </tr>
  *   <tr>
  *     <th>Typical usage</th>
- *     <td>strict unit tests</td>
+ *     <td>strict unit test</td>
  *     <td>loose (black-box) unit testing</td>
  *   </tr>
  *   <tr>
@@ -993,7 +993,7 @@ angular.mock.dump = function(object) {
  * # Flushing HTTP requests
  *
  * The $httpBackend used in production always responds to requests asynchronously. If we preserved
- * this behavior in unit testing, we'd have to create async unit tests, which are hard to write,
+ * this behavior in unit testing, we'd have to create async unit test, which are hard to write,
  * to follow and to maintain. But neither can the testing mock respond synchronously; that would
  * change the execution of the code under test. For this reason, the mock $httpBackend has a
  * `flush()` method, which allows the test to explicitly flush pending requests. This preserves
@@ -1045,7 +1045,7 @@ angular.mock.dump = function(object) {
        beforeEach(inject(function($injector) {
          // Set up the mock http service responses
          $httpBackend = $injector.get('$httpBackend');
-         // backend definition common for all tests
+         // backend definition common for all test
          authRequestHandler = $httpBackend.when('GET', '/auth.py')
                                 .respond({userId: 'userX'}, {'A-Token': 'xxx'});
 
@@ -1817,7 +1817,7 @@ angular.mock.$RootElementProvider = function() {
  *
  * # ngMock
  *
- * The `ngMock` module provides support to inject and mock Angular services into unit tests.
+ * The `ngMock` module provides support to inject and mock Angular services into unit test.
  * In addition, ngMock also extends various core ng services such that they can be
  * inspected and controlled in a synchronous manner within test code.
  *
@@ -2194,7 +2194,7 @@ if (window.jasmine || window.mocha) {
    * @description
    *
    * *NOTE*: This function is also published on window for easy access.<br>
-   * *NOTE*: This function is declared ONLY WHEN running tests with jasmine or mocha
+   * *NOTE*: This function is declared ONLY WHEN running test with jasmine or mocha
    *
    * This function registers a module configuration code. It collects the configuration information
    * which will be used when the injector is created by {@link angular.mock.inject inject}.
@@ -2237,7 +2237,7 @@ if (window.jasmine || window.mocha) {
    * @description
    *
    * *NOTE*: This function is also published on window for easy access.<br>
-   * *NOTE*: This function is declared ONLY WHEN running tests with jasmine or mocha
+   * *NOTE*: This function is declared ONLY WHEN running test with jasmine or mocha
    *
    * The inject function wraps a function into an injectable function. The inject() creates new
    * instance of {@link auto.$injector $injector} per test, which is then used for
@@ -2267,7 +2267,7 @@ if (window.jasmine || window.mocha) {
    *   myService = _myService_;
    * }));
    *
-   * // Use myService in a series of tests.
+   * // Use myService in a series of test.
    * it('makes use of myService', function() {
    *   myService.doStuff();
    * });
@@ -2277,7 +2277,7 @@ if (window.jasmine || window.mocha) {
    * See also {@link angular.mock.module angular.mock.module}
    *
    * ## Example
-   * Example of what a typical jasmine tests looks like with the inject method.
+   * Example of what a typical jasmine test looks like with the inject method.
    * ```js
    *
    *   angular.module('myApplicationModule', [])

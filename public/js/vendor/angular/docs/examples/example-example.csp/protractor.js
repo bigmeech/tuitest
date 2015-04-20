@@ -53,7 +53,7 @@ if (browser.params.browser !== 'chrome') {
 }
 
 it('should not report errors when the page is loaded', function() {
-  // clear errors so we are not dependent on previous tests
+  // clear errors so we are not dependent on previous test
   clearErrors();
   // Need to reload the page as the page is already loaded when
   // we come here
